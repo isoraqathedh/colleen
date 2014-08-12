@@ -8,7 +8,7 @@
                      :REAL "-Made with secret alien technology",
                      :USER NIL,
                      :PASS NIL,
-                     :CHANNELS (),
+                     :CHANNELS NIL,
                      :NICKSERVPW NIL,
                      :PING-STEP 5,
                      :PING-WARN 30,
@@ -16,10 +16,10 @@
                      :RECONNECT-COOLDOWN 5},
            :TYNET {EQUAL
                    :HOST "-irc.tymoon.eu",
-                   :CHANNELS ()},
+                   :CHANNELS NIL},
            :FREENODE {EQUAL
                       :HOST "-irc.freenode.org",
-                      :CHANNELS ()}},
+                      :CHANNELS NIL}},
  :MESSAGES {EQUAL
             :QUIT "-See you, space cowboy...",
             :JOIN NIL,
@@ -36,4 +36,4 @@
            :PREFIX ("-./" "-!")},
  :STARTUP {EQUAL
            :MODULES ("-auth" "-essentials"),
-           :SERVERS ()}} 
+           :SERVERS NIL}} 
