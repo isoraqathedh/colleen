@@ -1,0 +1,44 @@
+Permissions command
+===================
+
+Running the permissions command requires auth, and the permissions command cannot interfere with itself.
+
+Groupless version
+-----------------
+
+# Blacklist command
+
+`perms [command-name] american [nicks]`
+`perms [command-name] blacklist [nicks]`
+
+Upon running this command, [command-name] cannot be executed by [nicks], but others may do so.
+
+» perms foocmd american foousr barusr bazusr
+› Foousr, barusr and bazusr can no longer run the foocmd command
+
+» perms foocmd blacklist
+› Anyone can run the foocmd command
+
+# Whitelist command
+
+`perms [command-name] soviet [nicks]`
+`perms [command-name] whitelist [nicks]`
+
+Upon running this command, [command-name] can only be executed by [nicks]. No others may.
+
+» perms barcmd soviet foousr barusr bazusr
+› Only foousr, barusr and bazusr can run the barcmd command
+
+» perms barcmd whitelist
+› No one can run the barcmd command
+
+Notes
+	"American" and "Blacklist" are synonyms, as are "Soviet" and "Whitelist".
+	The arglist is still `&rest args`.
+
+Grouped version
+---------------
+
+Ae… groups are not hard to implement but the interactions between group and individual users
+can get difficult.
+
