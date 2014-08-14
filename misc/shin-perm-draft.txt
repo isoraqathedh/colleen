@@ -1,0 +1,37 @@
+[Quietly annotated for understanding]
+
+GFs:
+(match matchable event)
+(exec action)
+
+Class hierarchy:
+MATCHABLE:
+`-+- RULE: name command server channel nick username hostname track privmsg
+  `- GROUP: name mode matchable*
+     `--- ACTION: action
+– 
+General idea:
+On event loop through ACTIONs and as soon as MATCH succeeds,
+call EXEC and return. RULEs and GROUPs get separate namespaces
+with rules dominating in GROUP lookups.
+
+Interface prototype:
+!define-rule admin-rss :command rss
+!define-rule suntomic :nick suntomic :server TYNET
+!define-action suntomic grant AND suntomic admin-rss
+[meaning: there's a rule called "suntomic" that needs both a rule named "suntomic" and a rule named "admin-rss" to continue]
+
+!define-rule markov-tweets :command markov-tweet :channel #Stevenchan
+!define-action anon block (anon :nick anon.* :server TYNET :track T) markov-tweets
+
+!define-group admins (isoraqatdhedh :nick isoraqathedh :server TYNET|FREENODE :track T) (shinmera :nick shinmera :track T)
+!define-action update grant admins (update :command update|pull-local-projects|quickload) (colleen :nick Colleen)
+
+Extrapolating structure:
+!define-rule NAME &KEY COMMAND SERVER CHANNEL NICK USERNAME HOSTNAME TRACK PRIVMSG
+!define-group NAME &REST MATCHABLES
+!define-action NAME MODE ACTION &REST MATCHABLES
+
+Sounds good and convenient. Tricky parts: 
+* Writing a custom command parser that understands lists, strings and keywords.
+* ... that's it!
