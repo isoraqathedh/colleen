@@ -6,7 +6,7 @@ Author: Nicolas Hafner <shinmera@tymoon.eu>
 
 (in-package :org.tymoonnext.colleen)
 (defpackage org.tymoonnext.colleen.mod.permissions
-  (:use :cl :colleen :events)
+  (:use :cl :colleen :events :plump)
   (:nicknames :co-perms :co-permissions))
 (in-package :org.tymoonnext.colleen.mod.permissions)
 
