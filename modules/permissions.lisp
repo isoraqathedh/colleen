@@ -13,19 +13,6 @@ Author: Nicolas Hafner <shinmera@tymoon.eu>
 (colleen:define-module permissions () ()
   (:documentation "Manage permissions (limitations of command-use in certain commands."))
 
-
-(define-matcher space (is #\Space))
-
-(defmacro force-exist-symbol (name package)
-  (let ((name-sym (gensym))
-        (pack-sym (gensym)))
-    `(let ((,name-sym ,name)
-           (,pack-sym ,package))
-       (or (find-symbol (string-upcase ,name-sym)
-                        (string-upcase ,pack-sym))
-           (intern (string-upcase ,name-sym)
-                   (string-upcase ,pack-sym))))))
-
 (define-matcher :string-end (and (is #\") (prev (not (is #\\)))))
 
 (defun read-name ()
