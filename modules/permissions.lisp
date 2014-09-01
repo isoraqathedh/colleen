@@ -10,7 +10,7 @@ Author: Nicolas Hafner <shinmera@tymoon.eu>
   (:nicknames :co-perms :co-permissions))
 (in-package :org.tymoonnext.colleen.mod.permissions)
 
-(colleen:define-module permissions () ()
+(define-module permissions () ()
   (:documentation "Manage permissions (limitations of command-use in certain commands."))
 
 (define-matcher :string-end (and (is #\") (prev (not (is #\\)))))
