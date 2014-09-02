@@ -13,6 +13,27 @@ Author: Nicolas Hafner <shinmera@tymoon.eu>
 (define-module permissions () ()
   (:documentation "Manage permissions (limitations of command-use in certain commands."))
 
+(defclass matchable () ())
+
+(defclass rule (matchable)
+  ((name)
+   (command)
+   (server)
+   (channel)
+   (nick)
+   (username)
+   (hostname)
+   (track)
+   (privmsg)))
+
+(defclass group (matchable)
+  ((name)
+   (mode)
+   (matchables)))
+
+(defclass action (group)
+  ((action)))
+
 (define-matcher :string-end (and (is #\") (prev (not (is #\\)))))
 
 (defun read-name ()
@@ -47,3 +68,4 @@ Author: Nicolas Hafner <shinmera@tymoon.eu>
            (push (read-val) plist)
            (consume-until (make-matcher (not (is #\Space))))
         finally (return (nreverse plist))))
+
