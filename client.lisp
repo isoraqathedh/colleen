@@ -1,6 +1,6 @@
 #|
   This file is a part of Colleen
-  (c) 2013 TymoonNET/NexT http://tymoon.eu (shinmera@tymoon.eu)
+  (c) 2013 Shirakumo http://tymoon.eu (shinmera@tymoon.eu)
   Author: Nicolas Hafner <shinmera@tymoon.eu>
 |#
 
@@ -38,9 +38,12 @@
   "Retrieve a server by its keyword name, if it is connected."
   (gethash keyword *servers*))
 
+(defmethod server ((symbol symbol))
+  (get-server (find-symbol (string symbol) "KEYWORD")))
+
 (defun auth-p (nick)
   "Return T if the requested nick is on the server's authenticated users list."
-  (find nick (auth-users *current-server*) :test #'equal))
+  (find nick (auth-users *current-server*) :test #'equalp))
 
 (defun remove-from-auth (nick &optional reason)
   "Remove the user from the authenticated list. The optional reason string is only for logging."

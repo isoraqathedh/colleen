@@ -1,6 +1,6 @@
 #|
   This file is a part of Colleen
-  (c) 2013 TymoonNET/NexT http://tymoon.eu (shinmera@tymoon.eu)
+  (c) 2013 Shirakumo http://tymoon.eu (shinmera@tymoon.eu)
   Author: Nicolas Hafner <shinmera@tymoon.eu>
 |#
 
@@ -14,6 +14,7 @@
   :license "Artistic"
   :author "Nicolas Hafner <shinmera@tymoon.eu>"
   :maintainer "Nicolas Hafner <shinmera@tymoon.eu>"
+  :homepage "http://github.com/Shinmera/colleen"
   :description "IRC bot with a modular framework."
   :serial T
   :components ((:file "package")
@@ -46,8 +47,3 @@
                :uuid
                :cl-ppcre
                #+sbcl :sb-introspect))
-
-;; (defsystem colleen-doc
-;;   :name "Colleen Doc"
-;;   :components ((:file "documentation"))
-;;   :depends-on (:colleen :lquery-doc))

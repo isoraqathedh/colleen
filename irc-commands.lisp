@@ -1,6 +1,6 @@
 #|
   This file is a part of Colleen
-  (c) 2013 TymoonNET/NexT http://tymoon.eu (shinmera@tymoon.eu)
+  (c) 2013 Shirakumo http://tymoon.eu (shinmera@tymoon.eu)
   Author: Nicolas Hafner <shinmera@tymoon.eu>
 |#
 
@@ -15,7 +15,8 @@
       (write-string message stream)
       (write-char #\Return stream)
       (write-char #\Linefeed stream)
-      (finish-output stream))))
+      (finish-output stream))
+    message))
 
 (defun send-raw (message &key (server *current-server*))
   "Send a raw IRC command."
@@ -167,7 +168,7 @@
     (colleen:dispatch (make-instance 'colleen:send-event :server server :nick (colleen:nick server) :channel target :message message))
     (loop for message in (split-sequence:split-sequence #\Newline message)
           for i from 0 below line-limit
-          do (raw server "PRIVMSG ~a :~a" target message))))
+          collect (raw server "PRIVMSG ~a :~a" target message))))
 
 (defun notice (target message &key (server *current-server*))
   "Send a NOTICE."
