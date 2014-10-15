@@ -174,6 +174,9 @@
         (mapcar #'(lambda (a) (cdr (assoc :elements a))) (cdr (assoc :rows json)))
         (error (cdr (assoc :status json))))))
 
+(define-command (google search) (&rest query) (:documentation "Synonym to 'search google'")
+  (relay-command event (format NIL "search google ~{~a~^ ~}" query)))
+
 (defun great-circle-distance (lng1 lat1 lng2 lat2)
   (flet ((rad (x) (/ (* x Pi) 180))
          (haversine (x) (expt (sin (/ x 2)) 2)))
