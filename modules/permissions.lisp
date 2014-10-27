@@ -12,3 +12,4 @@ Author: Nicolas Hafner <shinmera@tymoon.eu>
 
 (colleen:define-module permissions () ()
   (:documentation "Manage permissions (limitations of command-use in certain commands."))
+
